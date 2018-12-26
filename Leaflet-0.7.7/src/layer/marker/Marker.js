@@ -15,7 +15,7 @@ L.Marker = L.Class.extend({
 		keyboard: true,
 		zIndexOffset: 0,
 		opacity: 1,
-		riseOnHover: false,
+		riseOnHover: false, // ????
 		riseOffset: 250
 	},
 
@@ -24,10 +24,11 @@ L.Marker = L.Class.extend({
 		this._latlng = L.latLng(latlng);
 	},
 
+	// 通过Map.js中的_layerAdd方法调用该方法
 	onAdd: function (map) {
 		this._map = map;
 
-		map.on('viewreset', this.update, this);
+		map.on('viewreset', this.update, this); // 监听viewreset事情，触发时执行update方法
 
 		this._initIcon();
 		this.update();
